@@ -1,0 +1,42 @@
+spring:
+  port: ${PORT:8089}
+  servlet:
+    multipart:
+      max-file-size: 10MB         # Maximum upload file size
+      max-request-size: 20MB      # Maximum request size, including all parts
+
+  folder:
+    id: 1zJZWPewLXuKUiLI8oKSLGeWVV-3l0Sml
+  drive:
+    credentials-path: googledrive.json
+
+  application:
+    name: pim
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}    # URL ของ Database
+    username: ${SPRING_DATASOURCE_USERNAME} # ชื่อผู้ใช้งาน Database
+    password: ${SPRING_DATASOURCE_PASSWORD} # รหัสผ่านของ Database
+
+  jpa:
+    hibernate:
+      ddl-auto: validate  # Set เป็น 'validate' ใน Production เพื่อไม่ให้เปลี่ยน schema โดยอัตโนมัติ
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect  # PostgreSQL dialect for Hibernate
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${SPRING_MAIL_USERNAME} # Email username
+    password: ${SPRING_MAIL_PASSWORD} # Email password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  servlet:
+    context-path: /api  # Base path for the server
